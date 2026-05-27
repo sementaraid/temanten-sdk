@@ -19,7 +19,8 @@
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "release": "tsx scripts/release.ts"
   },
   "dependencies": {
     "react-snowfall": "^2.4.0"
@@ -28,13 +29,25 @@
     "react": "^19.0.0"
   },
   "devDependencies": {
+    "@types/prompt": "^1.1.9",
     "@types/react": "^19.0.0",
+    "chalk": "^5.4.1",
+    "commander": "^13.1.0",
+    "inquirer": "^12.6.3",
+    "prompt": "^1.3.0",
     "tsup": "^8.0.0",
+    "tsx": "^4.22.3",
     "typescript": "~5.9.3"
   },
   "publishConfig": {
     "access": "public"
   },
-  "keywords": ["temanten", "wedding", "invitation", "template", "sdk"],
+  "keywords": [
+    "temanten",
+    "wedding",
+    "invitation",
+    "template",
+    "sdk"
+  ],
   "license": "MIT"
 }
