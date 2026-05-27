@@ -21,4 +21,5 @@ export type { TemantenProviderProps } from './context/index';
 export { WindowFrame } from './components/window-frame';
 export type { WindowFrameProps } from './components/window-frame';
 export { Audio } from './components/audio';
+export type { AudioProps } from './components/audio';
 export { SnowfallEffect } from './components/snowfall';
