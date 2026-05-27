@@ -78,6 +78,11 @@ export interface InvitationStoreBase {
   readonly error: string | null;
 }
 
+export interface MockInvitationStore extends InvitationStoreBase {
+  readonly source: 'mock';
+  update(updater: (prev: InvitationData) => InvitationData): void;
+}
+
 // ─── Guest store ──────────────────────────────────────────────────────────────
 
 export type GuestComment = {
