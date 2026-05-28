@@ -19,6 +19,15 @@ export { useWindow } from './hooks/useWindow';
 export { useIsIframe } from './hooks/useIsIframe';
 export { useScrollLock } from './hooks/useScrollLock';
 
+// ─── CDN registry & loader ────────────────────────────────────────────────────
+export {
+  fetchCdnRegistry,
+  loadCdnTemplate,
+  loadCdnTemplateBySlug,
+  createLazyCdnTemplate,
+} from './cdn/index';
+export type { TemplateBundleExport } from './cdn/index';
+
 // ─── Shared components ────────────────────────────────────────────────────────
 // Templates import these from @temanten/sdk at build time.
 // At runtime the UMD bundle resolves them from window.TemantenSDK, which the
