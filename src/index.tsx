@@ -25,6 +25,8 @@ export { useScrollLock } from './hooks/useScrollLock';
 // host app populates with this very module — so all components share the same
 // React context and instance as the host app.
 export { WindowFrame } from './components/window-frame';
+export { WindowTemplate } from './components/window-template';
+export type { WindowTemplateProps } from './components/window-template';
 export type { WindowFrameProps } from './components/window-frame';
 export { Audio } from './components/audio';
 export type { AudioProps } from './components/audio';
