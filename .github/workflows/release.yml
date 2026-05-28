@@ -32,7 +32,9 @@ jobs:
       - name: Pack
         id: pack
         run: |
-          TARBALL=$(npm pack --pack-destination . 2>/dev/null | tail -1)
+          VERSION=${GITHUB_REF_NAME#v}
+          TARBALL="temanten-sdk-${VERSION}.tar.gz"
+          tar -czf "$TARBALL" package.json dist/
           echo "tarball=$TARBALL" >> $GITHUB_OUTPUT
 
       - name: Create GitHub Release
