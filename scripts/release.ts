@@ -175,7 +175,7 @@ async function main(): Promise<void> {
   console.log(`  ${chalk.dim('tag')}       ${chalk.green(newTag)}`);
   console.log(`  ${chalk.dim('build')}     ${opts.skipBuild ? chalk.dim('skipped') : 'pnpm build'}`);
   console.log(`  ${chalk.dim('steps')}     commit package.json → tag → push origin`);
-  console.log(`  ${chalk.dim('ci')}        GitHub Actions will publish to npm on tag push`);
+  console.log(`  ${chalk.dim('ci')}        GitHub Actions will build, pack, and upload tar.gz as a GitHub Release`);
 
   // ── 6. prompt — type version to confirm ──────────────────────────────────
   if (!opts.yes) {
@@ -241,12 +241,14 @@ async function main(): Promise<void> {
   console.log(chalk.green('✔') + ' Pushed branch + tag');
 
   // ── 8. Done ───────────────────────────────────────────────────────────────
+  const repo = 'sementaraid/temanten-sdk';
+  const tarball = `temanten-sdk-${newVersion}.tgz`;
+  const releaseUrl = `https://github.com/${repo}/releases/download/${newTag}/${tarball}`;
+
   console.log('\n' + chalk.bold.green('✨ Released successfully!'));
-  console.log(
-    chalk.dim(
-      `   GitHub Actions will now publish ${chalk.white(`${pkg.name}@${newVersion}`)} to npm.\n`
-    )
-  );
+  console.log(chalk.dim(`   GitHub Actions will build and upload the release asset.`));
+  console.log(chalk.dim(`   Once the workflow completes, install with:\n`));
+  console.log(chalk.white(`   "${pkg.name}": "${releaseUrl}"\n`));
 }
 
 main().catch((err: Error) => {
