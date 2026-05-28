@@ -13,6 +13,12 @@ export {
 } from './context/index';
 export type { TemantenProviderProps } from './context/index';
 
+// ─── Utility hooks ────────────────────────────────────────────────────────────
+// Shared by the app and all templates — import from @temanten/sdk, not locally.
+export { useWindow } from './hooks/useWindow';
+export { useIsIframe } from './hooks/useIsIframe';
+export { useScrollLock } from './hooks/useScrollLock';
+
 // ─── Shared components ────────────────────────────────────────────────────────
 // Templates import these from @temanten/sdk at build time.
 // At runtime the UMD bundle resolves them from window.TemantenSDK, which the
