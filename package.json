@@ -1,6 +1,6 @@
 {
   "name": "@temanten/sdk",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "SDK for building Temanten wedding invitation templates",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -52,6 +52,8 @@
   ],
   "license": "MIT",
   "pnpm": {
-    "onlyBuiltDependencies": ["esbuild"]
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
   }
 }
