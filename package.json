@@ -50,10 +50,5 @@
     "template",
     "sdk"
   ],
-  "license": "MIT",
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild"
-    ]
-  }
+  "license": "MIT"
 }
