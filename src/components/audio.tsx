@@ -6,19 +6,15 @@ export type AudioProps = { src: string };
 export const Audio = ({ src }: AudioProps) => {
   const { playAudio } = useUIStore();
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const hasStarted = useRef(false);
 
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
     if (playAudio) {
       audio.volume = 1;
-      if (!hasStarted.current) {
-        audio.play().catch(() => {});
-        hasStarted.current = true;
-      }
+      audio.play().catch(() => {});
     } else {
-      audio.volume = 0;
+      audio.pause();
     }
   }, [playAudio]);
 
