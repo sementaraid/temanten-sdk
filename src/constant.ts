@@ -33,7 +33,13 @@ export const DEFAULT_INVITATION_DATA: InvitationData = {
     address: 'Jl. Contoh No. 1 RT. 01 RW. 01 Kel. Contoh Kec. Contoh Kota',
     mapsUrl: 'https://maps.app.goo.gl/contoh',
   },
-  gallery: [],
+  gallery: [
+    'https://picsum.photos/seed/wedding1/800/600',
+    'https://picsum.photos/seed/wedding2/600/800',
+    'https://picsum.photos/seed/wedding3/800/800',
+    'https://picsum.photos/seed/wedding4/800/600',
+    'https://picsum.photos/seed/wedding5/600/800',
+  ],
   loveStory: [
     {
       date: '1 Januari 2025',
