@@ -28,6 +28,7 @@ export type InvitationData = {
     mother: string;
     instagram?: string;
   };
+  gallery: string[];
   ceremony: {
     date: string;
     time: string;

@@ -33,6 +33,7 @@ export const DEFAULT_INVITATION_DATA: InvitationData = {
     address: 'Jl. Contoh No. 1 RT. 01 RW. 01 Kel. Contoh Kec. Contoh Kota',
     mapsUrl: 'https://maps.app.goo.gl/contoh',
   },
+  gallery: [],
   loveStory: [
     {
       date: '1 Januari 2025',
