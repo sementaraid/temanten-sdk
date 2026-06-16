@@ -29,6 +29,7 @@ export type InvitationData = {
     instagram?: string;
   };
   gallery: string[];
+  musicUrl?: string;
   ceremony: {
     date: string;
     time: string;
