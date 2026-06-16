@@ -10,12 +10,26 @@ export const Audio = ({ src }: AudioProps) => {
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
+
+    let retry: (() => void) | null = null;
+
     if (playAudio) {
       audio.volume = 1;
-      audio.play().catch(() => {});
+      audio.play().catch(() => {
+        // Browser blocked autoplay (no user gesture yet).
+        // Retry on the next click — covers the case where playAudio was true
+        // from localStorage on reload and the state never changes when the
+        // user clicks "Buka Undangan".
+        retry = () => audio.play().catch(() => {});
+        document.addEventListener('click', retry, { once: true });
+      });
     } else {
       audio.pause();
     }
+
+    return () => {
+      if (retry) document.removeEventListener('click', retry);
+    };
   }, [playAudio]);
 
   if (!src) return null;
