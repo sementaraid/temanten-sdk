@@ -4,9 +4,28 @@ import { useUIStore } from '../context/index';
 export type AudioProps = { src?: string };
 
 export const Audio = ({ src }: AudioProps) => {
-  const { playAudio } = useUIStore();
+  const { playAudio, setPlayAudio } = useUIStore();
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
+  // Sync external pause/play signals (iOS system bar, browser media controls)
+  // back into the store so the floating controls reflect the real state.
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    const onPause = () => setPlayAudio(false);
+    const onPlay  = () => setPlayAudio(true);
+
+    audio.addEventListener('pause', onPause);
+    audio.addEventListener('play', onPlay);
+
+    return () => {
+      audio.removeEventListener('pause', onPause);
+      audio.removeEventListener('play', onPlay);
+    };
+  }, [setPlayAudio]);
+
+  // Drive the audio element from store state.
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
