@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useUIStore } from '../context/index';
 
-export type AudioProps = { src: string };
+export type AudioProps = { src?: string };
 
 export const Audio = ({ src }: AudioProps) => {
   const { playAudio } = useUIStore();
@@ -17,6 +17,8 @@ export const Audio = ({ src }: AudioProps) => {
       audio.pause();
     }
   }, [playAudio]);
+
+  if (!src) return null;
 
   return <audio ref={audioRef} src={src} loop preload="auto" className="hidden" />;
 };
