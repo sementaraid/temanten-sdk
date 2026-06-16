@@ -10,7 +10,7 @@ function readStorage(): PersistedState {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (raw) return { playAudio: false, darkMode: false, ...JSON.parse(raw) };
   } catch {}
-  return { playAudio: false, darkMode: false };
+  return { playAudio: true, darkMode: false };
 }
 
 function writeStorage(state: PersistedState) {
