@@ -28,6 +28,10 @@ export type TemantenProviderProps = (
       mode: 'live';
       /** The guest's ID from the invitation URL (`?guest_id=`). */
       guestId?: string;
+      /** Whether this guest is flagged VIP (data only — no built-in rendering). */
+      isVip?: boolean;
+      /** Whether this guest should see the gift/angpao section. Defaults to true. */
+      showGiftSection?: boolean;
       /** Pre-fetched invitation data — avoids an extra network round-trip. */
       initialData?: InvitationData;
     }
@@ -63,7 +67,9 @@ export const TemantenProvider = (props: TemantenProviderProps) => {
 
   const guest = useGuestStoreImpl(
     props.mode === 'live' ? (props.initialData?.id ?? null) : null,
-    props.mode === 'live' ? (props.guestId ?? null) : null
+    props.mode === 'live' ? (props.guestId ?? null) : null,
+    props.mode === 'live' ? (props.isVip ?? false) : false,
+    props.mode === 'live' ? (props.showGiftSection ?? true) : true
   );
 
   const invitation: InvitationStoreBase =

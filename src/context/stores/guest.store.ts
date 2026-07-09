@@ -14,7 +14,9 @@ const POLL_INTERVAL_MS = 10_000;
  */
 export const useGuestStoreImpl = (
   invitationId: string | null,
-  guestId: string | null
+  guestId: string | null,
+  isVip = false,
+  showGiftSection = true
 ): GuestStore => {
   const [comments, setComments] = useState<GuestComment[]>([]);
   const [commentsLoading, setCommentsLoading] = useState(!!invitationId);
@@ -95,5 +97,14 @@ export const useGuestStoreImpl = (
     [guestId, invitationId, pollComments]
   );
 
-  return { guestId, comments, commentsLoading, submitting, submitted, submit };
+  return {
+    guestId,
+    isVip,
+    showGiftSection,
+    comments,
+    commentsLoading,
+    submitting,
+    submitted,
+    submit,
+  };
 };

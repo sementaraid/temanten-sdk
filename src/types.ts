@@ -98,6 +98,8 @@ export type Attendance = 'attending' | 'tentative' | 'not_attending';
 
 export interface GuestStore {
   readonly guestId: string | null;
+  readonly isVip: boolean;
+  readonly showGiftSection: boolean;
   readonly comments: GuestComment[];
   readonly commentsLoading: boolean;
   readonly submitting: boolean;
