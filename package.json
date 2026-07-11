@@ -1,6 +1,6 @@
 {
   "name": "@temanten/sdk",
-  "version": "1.2.3",
+  "version": "1.3.0",
   "description": "SDK for building Temanten wedding invitation templates",
   "type": "module",
   "main": "./dist/index.cjs",
