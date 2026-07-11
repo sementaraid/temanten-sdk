@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import type { GuestStore, GuestComment, Attendance } from '../../types';
 
 type RawComment = { id: string; name: string; message: string; createdAt: string };
+type GuestResponsesPayload = { message: string; results: RawComment[] };
 
 const POLL_INTERVAL_MS = 10_000;
 
@@ -28,9 +29,9 @@ export const useGuestStoreImpl = (
     try {
       const res = await fetch(`/api/guest-responses/${id}`);
       if (!res.ok) return;
-      const raw: RawComment[] = await res.json();
+      const payload: GuestResponsesPayload = await res.json();
       setComments(
-        raw.map((r) => ({
+        payload.results.map((r) => ({
           id: r.id,
           name: r.name,
           message: r.message,
