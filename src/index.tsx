@@ -18,6 +18,7 @@ export type { TemantenProviderProps } from './context/index';
 export { useWindow } from './hooks/useWindow';
 export { useIsIframe } from './hooks/useIsIframe';
 export { useScrollLock } from './hooks/useScrollLock';
+export { useMusicAllowed } from './hooks/useMusicAllowed';
 
 // ─── CDN registry & loader ────────────────────────────────────────────────────
 export {

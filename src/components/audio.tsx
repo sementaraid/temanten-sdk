@@ -1,10 +1,12 @@
 import { useEffect, useRef } from 'react';
 import { useUIStore } from '../context/index';
+import { useMusicAllowed } from '../hooks/useMusicAllowed';
 
 export type AudioProps = { src?: string };
 
 export const Audio = ({ src }: AudioProps) => {
   const { playAudio, setPlayAudio } = useUIStore();
+  const musicAllowed = useMusicAllowed();
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   // Sync external pause/play signals (iOS system bar, browser media controls)
@@ -32,7 +34,7 @@ export const Audio = ({ src }: AudioProps) => {
 
     let retry: (() => void) | null = null;
 
-    if (playAudio) {
+    if (playAudio && musicAllowed) {
       audio.volume = 1;
       audio.play().catch(() => {
         // Browser blocked autoplay (no user gesture yet).
@@ -49,7 +51,7 @@ export const Audio = ({ src }: AudioProps) => {
     return () => {
       if (retry) document.removeEventListener('click', retry);
     };
-  }, [playAudio]);
+  }, [playAudio, musicAllowed]);
 
   if (!src) return null;
 
